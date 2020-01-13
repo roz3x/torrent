@@ -7,6 +7,7 @@ package pears
 import (
 	"encoding/binary"
 	"net"
+	"strconv"
 )
 
 //Pear the ips and ports of the file
@@ -29,4 +30,10 @@ func GetPears(payload []byte) ([]Pear, error) {
 		pears[i].Port = binary.BigEndian.Uint16(payload[offset+4 : offset+6])
 	}
 	return pears, nil
+}
+
+//URL will return the formatted url of the pear
+//used for handshaking a fetching the data
+func (p *Pear) URL() string {
+	return string(p.IP.String() + ":" + strconv.Itoa(int(p.Port)))
 }
