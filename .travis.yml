@@ -11,3 +11,5 @@ before_install:
 script:
   - cd ./pears
   - go test -v -run=TestParsing .
+  - cd ./handshake 
+  - go test -v -run=TestHandshake .
