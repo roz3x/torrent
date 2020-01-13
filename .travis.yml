@@ -1,0 +1,13 @@
+language: go
+
+go: 
+  - 1.13.x
+
+env:
+  - GO111MODULE=on
+before_install:
+  - go get -v github.com/jackpal/bencode-go
+
+script:
+  - cd ./pears
+  - go test -v -run=TestParsing .
